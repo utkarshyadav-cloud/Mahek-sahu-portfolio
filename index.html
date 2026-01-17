@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mahek Sahu | Creative Portfolio</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<!-- Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Poppins', sans-serif;
+  background:#fff5f8;
+}
+
+/* HERO */
+header{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  background:linear-gradient(to right,#ffdde1,#ee9ca7);
+}
+
+header h1{
+  font-family:'Great Vibes', cursive;
+  font-size:5rem;
+  color:#6a0572;
+}
+
+header h2{
+  font-family:'Playfair Display', serif;
+}
+
+.social-icons a{
+  font-size:1.6rem;
+  margin:10px;
+  color:#6a0572;
+}
+
+/* SECTION */
+section{
+  padding:80px 10%;
+}
+
+section h2{
+  text-align:center;
+  font-family:'Playfair Display', serif;
+  font-size:2.6rem;
+  margin-bottom:40px;
+  color:#6a0572;
+}
+
+/* SKILLS */
+.skills{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:30px;
+}
+
+.skill-card{
+  background:#fff;
+  padding:40px;
+  border-radius:20px;
+  text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,0.15);
+  cursor:pointer;
+  transition:0.4s;
+}
+
+.skill-card:hover{
+  transform:translateY(-10px) scale(1.05);
+  background:linear-gradient(135deg,#fbc2eb,#a6c1ee);
+}
+
+/* MODAL */
+.modal{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.8);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:1000;
+}
+
+.modal-content{
+  background:#fff;
+  width:90%;
+  max-width:1000px;
+  border-radius:20px;
+  padding:30px;
+  animation:zoom 0.5s;
+}
+
+@keyframes zoom{
+  from{transform:scale(0.5);}
+  to{transform:scale(1);}
+}
+
+.close{
+  text-align:right;
+  font-size:1.5rem;
+  cursor:pointer;
+}
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+  margin-top:20px;
+}
+
+.gallery img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  border-radius:15px;
+  transition:0.4s;
+}
+
+.gallery img:hover{
+  transform:scale(1.1);
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<header>
+  <h1>Mahek Sahu</h1>
+  <h2>Fashion & Art Designer</h2>
+  <div class="social-icons">
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="mailto:example@gmail.com"><i class="fas fa-envelope"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+  </div>
+</header>
+<body>
+
+  <!-- HERO -->
+  <header>
+    <h1>Mahek Sahu</h1>
+    <h2>Fashion & Art Designer</h2>
+    <p>
+      BSc Fashion Designing Student at Invertis University, Bareilly<br>
+      Expert in Bridal Mehndi, Crochet Art, Mandala Art, Craft & Clothing Design
+    </p>
+    <div class="scroll">↓ Scroll to Explore ↓</div>
+  </header>
+
+  <!-- ABOUT -->
+  <section>
+    <h2>About Me</h2>
+    <div class="about">
+      I am Mahek Sahu, a passionate fashion designing student with a deep love
+      for traditional and modern art forms. My creativity reflects through
+      bridal mehndi designs, crochet art, mandala illustrations, handcrafted
+      crafts, and innovative clothing designs. I believe fashion is not just
+      clothing—it is an expression of art and soul.
+    </div>
+  </section>
+
+<!-- SKILLS -->
+<section>
+    <h2>My Creative Skills</h2>
+  <div class="skills">
+
+    <div class="skill-card" onclick="openGallery('mehndi')">
+      <h3>Bridal Mehndi</h3>
+      <p>Click to view projects</p>
+    </div>
+
+    <div class="skill-card" onclick="openGallery('crochet')">
+      <h3>Crochet Art</h3>
+      <p>Click to view projects</p>
+    </div>
+
+    <div class="skill-card" onclick="openGallery('mandala')">
+      <h3>Mandala Art</h3>
+      <p>Click to view projects</p>
+    </div>
+
+    <div class="skill-card" onclick="openGallery('fashion')">
+      <h3>Clothing Design</h3>
+      <p>Click to view projects</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <div class="close" onclick="closeGallery()">❌</div>
+    <div class="gallery" id="gallery"></div>
+  </div>
+</div>
+
+<script>
+const images = {
+  mehndi:[
+    "https://cdn.shopify.com/s/files/1/0561/7926/1589/files/Raja_Rani_Motif_480x480.png?v=1706354557",
+    "https://cdn.shopify.com/s/files/1/0561/7926/1589/files/Bridal_Saree_Border_480x480.png?v=1706355619",
+    "https://cdn.shopify.com/s/files/1/0561/7926/1589/files/Rajasthani_Revival_480x480.png?v=1706354948"
+  ],
+  crochet:[
+    "https://arttales.in/cdn/shop/files/flower_decor.jpg?v=1735890841&width=713",
+    "https://isv.prod.lovecrafts.co/v1/images/913e9c71fd6f6ac01521f2ae1853d93c/0334a52a-21f9-4b66-96d3-db7d85be9a3c.jpeg/0/-/832x832",
+    "https://crochetart.in/wp-content/uploads/2025/10/download-1.jpg"
+  ],
+  mandala:[
+    "https://joyofmotioncrochet.com/wp-content/uploads/2025/11/Crochet-Mandala-Patterns.jpg",
+    "https://thecrochetcrowd.com/wp-content/uploads/2021/12/Crochet-Rainbow-Star-Bernat-Blanket-Pattern.jpg",
+    "https://thecrochetcrowd.com/wp-content/uploads/2016/04/Megan-Mandala-3-700x525.jpg"
+  ],
+  fashion:[
+    "https://printify.com/wp-content/uploads/2024/07/Create-The-Perfect-Crop-Top-Hoodie.jpg",
+    "https://printify.com/wp-content/uploads/2024/07/Custom-Crop-Top-Hoodie-Printify.jpg",
+    "https://printify.com/wp-content/uploads/2024/09/Womens-cropped-hooded-sweatshirt-with-design.jpg"
+  ]
+};
+
+function openGallery(skill){
+  const gallery=document.getElementById("gallery");
+  gallery.innerHTML="";
+  images[skill].forEach(img=>{
+    gallery.innerHTML+=`<img src="${img}">`;
+  });
+  document.getElementById("modal").style.display="flex";
+}
+
+function closeGallery(){
+  document.getElementById("modal").style.display="none";
+}
+</script>
+
+  <!-- CONTACT -->
+  <section>
+    <h2>Contact</h2>
+    <div class="contact">
+                 <p>📍 Invertis University, Bareilly</p>
+      <p>✉️ Email:<a href="mailto:sahumahek177@gmail.com">
+  <i class="fas fa-envelope"></i>
+</a>
+
+
+                  <p>📱 Instagram: <a href="https://www.instagram.com/mhk.createss/" target="_blank">
+  <i class="fab fa-instagram"></i>
+</a>
+
+    </div>
+  </section>
+
+  <footer>
+                      <p></p> © 2026 Mahek Sahu | Fashion & Art Portfolio</p>
+                    </footer/P>
+                    </footer>
+
+</body>
+</html>
+
+</body>
+</html>
